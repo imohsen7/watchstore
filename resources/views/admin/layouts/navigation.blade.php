@@ -1,5 +1,6 @@
 <div class="navigation">
 		<div class="navigation-icon-menu">
+			@hasanyrole('مدیر اصلی')
 			<ul>
 				<li data-toggle="tooltip" title="کاربران">
 					<a href="#users" title=" کاربران">
@@ -7,6 +8,7 @@
 					</a>
 				</li>
 			</ul>
+			@endhasanyrole
 			<ul>
 				<li data-toggle="tooltip" title="ویرایش پروفایل">
 					<a href="#" class="go-to-page">
@@ -25,8 +27,28 @@
 				<li>
 					<a href="#">کاربران</a>
 					<ul>
-						<li><a href="#">ایجاد کاربر</a></li>
-						<li><a href="#">لیست کاربران</a></li>
+						<li><a href="{{route('users.create')}}">ایجاد کاربر</a></li>
+						<li><a href="{{route('users.index')}}">لیست کاربران</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">نقش ها</a>
+					<ul>
+						<li><a href="{{route('roles.create')}}">ایجاد نقش</a></li>
+						<li><a href="{{route('roles.index')}}">لیست نقش ها</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">لاگ ها</a>
+					<ul>
+						<li><a href="{{route('logs')}}">مشاهده لاگ ها</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">محصولات</a>
+					<ul>
+						<li><a href="{{route('category.create')}}">ایجاد دسته بندی</a></li>
+						<li><a href="{{route('category.index')}}">لیست دسته بندی</a></li>
 					</ul>
 				</li>
 			</ul>

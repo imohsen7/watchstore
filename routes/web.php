@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LogViewerController;
+use App\Http\Controllers\Admin\PanelController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,10 +33,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('admin', function() { 
-        return view('admin.index');
-    });
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/', [PanelController::class,'index'])->name('panel');
+    Route::resource('/users',UserController::class);
+    Route::resource('/roles',RoleController::class);
+    Route::get('create_user_roles/{id}',[UserController::class,'createUserRoles'])->name('create.user.roles');
+    Route::post('store_user_roles/{id}',[UserController::class,'storeUserRoles'])->name('store.user.roles');
+    Route::get('logs',[LogViewerController::class,'index'])->name('logs');
+
+    Route::resource('category',CategoryController::class);
+
 });
 
 
