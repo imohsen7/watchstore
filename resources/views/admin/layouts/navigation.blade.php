@@ -7,6 +7,11 @@
 						<i class="icon ti-user"></i>
 					</a>
 				</li>
+				<li data-toggle="tooltip" title="محصولات">
+					<a href="#products" title=" محصولات">
+						<i class="icon ti-shopping-cart"></i>
+					</a>
+				</li>
 			</ul>
 			@endhasanyrole
 			<ul>
@@ -44,11 +49,20 @@
 						<li><a href="{{route('logs')}}">مشاهده لاگ ها</a></li>
 					</ul>
 				</li>
+			</ul>
+			<ul id="products">
 				<li>
-					<a href="#">محصولات</a>
+					<a href="#">دسته بندی</a>
 					<ul>
 						<li><a href="{{route('category.create')}}">ایجاد دسته بندی</a></li>
 						<li><a href="{{route('category.index')}}">لیست دسته بندی</a></li>
+					</ul>
+				</li>
+				<li>	
+					<a href="#">اسلایدر</a>
+					<ul>
+						<li><a href="{{route('sliders.create')}}">ایجاد اسلایدر</a></li>
+						<li><a href="{{route('sliders.index')}}">لیست اسلایدر</a></li>
 					</ul>
 				</li>
 			</ul>

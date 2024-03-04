@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="/panel/vendors/vmap/jqvmap.min.css">
 	<link rel="stylesheet" href="/panel/assets/css/app.css" type="text/css">
 	<link rel="stylesheet" href="/panel/vendors/select2/css/select2.min.css" type="text/css">
+	<!-- <link rel="stylesheet" href="/panel/panel/plugins/sweet_alert/sweetalert2.min.css" type="text/css"> -->
 </head>
 <body class="small-navigation">
 @include('admin.layouts.navigation')
@@ -23,6 +24,7 @@
 
 	<script src="/panel/vendors/bundle.js"></script>
 	<script src="/panel/vendors/select2/js/select2.min.js"></script>
+	<script src="/panel/plugins/sweet_alert/sweetalert2.all.min.js"></script>
 	<script src="/panel/vendors/slick/slick.min.js"></script>
 	<script src="/panel/vendors/vmap/jquery.vmap.min.js"></script>
 	<script src="/panel/assets/js/app.js"></script>

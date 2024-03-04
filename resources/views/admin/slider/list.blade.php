@@ -13,7 +13,7 @@
 
 		<div class="card">
             <div class="card-body">
-				<livewire:admin.categories/>
+				<livewire:admin.sliders/>
             </div>
         </div>
 

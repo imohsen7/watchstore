@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+        $title="لیست دسته بندی محصولات";
+        return view('admin.category.list',compact('title'));
     }
 
     /**
@@ -21,7 +23,8 @@ class CategoryController extends Controller
     public function create()
     {
         $title="ایجاد دسته بندی محصولات";
-        return view('admin.category.create',compact('title'));
+        $categories = Category::all();
+        return view('admin.category.create',compact('title','categories'));
     }
 
     /**
@@ -29,7 +32,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = Category::saveImage($request->file);
+        Category::query()->create([
+            'title' => $request->input('title'),
+            'parent_id' =>$request->input('parent_id'),
+            'image' => $image,
+        ]);
+        return redirect()->route('category.index')->with('message','Category Created');
     }
 
     /**
@@ -45,7 +54,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::query()->find($id);
+        $categories = Category::all();
+        return view('admin.category.edit',compact('category','categories'));
     }
 
     /**
@@ -53,7 +64,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        $image = Category::saveImage($request->file);
+        $category = Category::query()->find($id);
+        
+        $category->update([
+            'title'=> $request->input('title'),
+            'parent_id'=> $request->input('parent_id'),
+            'image' => ($request->file != '' ? $image : $category->image)
+        ]);
+        return redirect()->route('category.index')->with('message','Category Updated');
     }
 
     /**
